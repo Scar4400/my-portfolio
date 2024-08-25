@@ -1,0 +1,3 @@
+// SkillIcon.jsximport React from 'react';import { motion } from 'framer-motion';const SkillIcon = ({ skill }) => {
+  return (
+    <motion.div      initial={{ opacity: 0, scale: 0.8 }}      whileInView={{ opacity: 1, scale: 1 }}      transition={{ duration: 0.5 }}      className="flex flex-col items-center justify-center p-4 bg-white shadow-lg rounded-lg"    >      <img src={`/assets/icons/${skill.icon}`} alt={`${skill.name} icon`} className="w-12 h-12" />      <p className="mt-2 text-gray-700">{skill.name}</p>    </motion.div>  );};export default SkillIcon;

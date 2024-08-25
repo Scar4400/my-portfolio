@@ -1,0 +1,6 @@
+import React, { useEffect, useState } from 'react';import { motion } from 'framer-motion';const Hero = () => {
+  const titles = ['Front-End Developer', 'AI Enthusiast', 'Creative Technologist'];  const [index, setIndex] = useState(0);  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % titles.length);    }, 2000);    return () => clearInterval(interval);  }, []);  return (
+    <motion.section      initial={{ opacity: 0 }}      animate={{ opacity: 1 }}      transition={{ duration: 1 }}      className="flex flex-col justify-center items-center h-screen bg-gradient-to-r from-blue-500 to-purple-600 text-white"    >      <h1 className="text-4xl font-bold">Oscar Ndugbu</h1>      <h2 className="text-3xl font-medium text-gray-700">        <Typewriter          options={{
+            strings: ['Front-End Developer', 'AI Enthusiast', 'Environmental Technologist'],            autoStart: true,            loop: true,            deleteSpeed: 50,            cursor: '|',          }}        />      </h2>    </section>  );};export default Hero;

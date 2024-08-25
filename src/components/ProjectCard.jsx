@@ -1,0 +1,4 @@
+import React from 'react'; import { motion } from 'framer-motion';
+const ProjectCard = ({ project }) => {
+  return (
+    <motion.div      whileHover={{ scale: 1.05 }}      className="bg-white rounded-lg shadow-lg p-4 hover:shadow-xl"    >      <img src={`/assets/images/${project.image}`} alt={`${project.title} screenshot`} className="w-full h-40 object-cover rounded-md mb-4" />      <h3 className="text-xl font-bold">{project.title}</h3>      <motion.p        className="mt-2 text-gray-600"        initial={{ opacity: 0 }}        whileHover={{ opacity: 1 }}      >        {project.description}      </motion.p>    </motion.div>  );};export default ProjectCard;

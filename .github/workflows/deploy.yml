@@ -1,0 +1,39 @@
+name: CI/CD for Portfolio
+
+on:
+  push:
+    branches:
+      - main  # or whatever your default branch is
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20.15.0'  # Ensure you're using the correct Node version for your project
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run Lint
+      run: npm run lint
+
+    - name: Run Tests
+      run: npm test
+
+    - name: Build project
+      run: npm run build
+
+    - name: Deploy to Heroku
+      env:
+        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        HEROKU_APP_NAME: your-heroku-app-name
+      run: |
+        git remote add heroku https://git.heroku.com/${{ secrets.HEROKU_APP_NAME }}.git
+        git push heroku main

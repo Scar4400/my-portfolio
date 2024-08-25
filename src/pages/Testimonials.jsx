@@ -1,0 +1,8 @@
+import React from 'react';import { motion } from 'framer-motion';const testimonials = [
+  {
+    name: 'Jane Doe',    feedback: 'Oscar is an exceptional developer. His attention to detail is remarkable!',    title: 'Senior Developer',  },  {
+    name: 'John Smith',    feedback: 'Oscar is always willing to go the extra mile. Highly recommend!',    title: 'Project Manager',  },  {
+    name: 'Sarah Johnson',    feedback: 'A pleasure to work with, always delivers high-quality results.',    title: 'Designer',  },];const Testimonials = () => {
+  return (
+    <section className="py-10 bg-gray-100">      <h2 className="text-3xl font-bold text-center">Testimonials</h2>      <motion.div        initial="hidden"        whileInView="visible"        viewport={{ once: true, amount: 0.3 }}        className="flex flex-col md:flex-row justify-around mt-8 gap-10"      >        {testimonials.map((testimonial, index) => (
+          <motion.div            key={index}            initial={{ opacity: 0, x: -50 }}            animate={{ opacity: 1, x: 0 }}            transition={{ delay: index * 0.2, duration: 0.5 }}            className="bg-white p-6 rounded-lg shadow-md w-full md:w-1/3"          >            <p className="italic text-lg">"{testimonial.feedback}"</p>            <h4 className="mt-4 font-semibold">{testimonial.name}</h4>            <span className="text-gray-500">{testimonial.title}</span>          </motion.div>        ))}      </motion.div>    </section>  );};export default Testimonials;
